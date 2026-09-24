@@ -16,7 +16,7 @@ npm install
 npm run dev
 ```
 
-Open `http://localhost:3000`. The initial screens use explicit sample data in `apps/web/lib/sample-data.ts`; no user accounts, purchases, or submissions are persisted yet.
+Open `http://localhost:3000`. Catalogue screens use sample data in `apps/web/lib/sample-data.ts`. Students can create a project, check milestones and add build log notes. This prototype stores those projects only in the current browser's local storage; there are no accounts or cross-device sync yet.
 
 ## Next implementation milestones
 
