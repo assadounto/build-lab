@@ -1,6 +1,6 @@
 # Student project API contract (next milestone)
 
-The browser storage prototype defines the user flow. The Rails endpoints below now implement owner-scoped project persistence. Connect the web app after secure session handling is implemented. A client-supplied owner ID never authorizes access.
+The Rails endpoints below implement owner-scoped project persistence. The web app calls Rails through server routes, storing the opaque Rails token in an HTTP-only, same-site cookie. A client-supplied owner ID never authorizes access. Earlier browser-only projects can be imported after sign-in.
 
 | Method | Route | Purpose |
 | --- | --- | --- |

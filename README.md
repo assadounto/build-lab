@@ -16,13 +16,12 @@ npm install
 npm run dev
 ```
 
-Open `http://localhost:3000`. Catalogue screens use sample data in `apps/web/lib/sample-data.ts`. Students can create a project, check milestones and add build log notes. This prototype stores those projects only in the current browser's local storage; there are no accounts or cross-device sync yet.
+Start the Rails API as described in `apps/api/README.md`, then run Next.js with `RAILS_API_URL=http://localhost:3001`. Open `http://localhost:3000`. Catalogue screens use sample data in `apps/web/lib/sample-data.ts`. Provisioned student accounts can sign in and save projects, milestones and build notes to PostgreSQL through the web server. Earlier browser-only projects can be imported from the studio.
 
 ## Next implementation milestones
 
-1. Connect the studio UI to authenticated Rails project endpoints, with secure session handling.
-2. Build school-managed learner access and teacher assignment workflows.
-3. Add lessons, course enrollments, project evidence uploads and mentor review.
-4. Add verified course purchases and reporting.
+1. Build school-managed learner access and teacher assignment workflows.
+2. Add lessons, course enrollments, project evidence uploads and mentor review.
+3. Add verified course purchases and reporting.
 
 See `docs/product.md` for scope and data rules.
