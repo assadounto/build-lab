@@ -1,11 +1,21 @@
 # API foundation
 
-This directory records the Rails API dependencies and resource boundaries. It is **not yet a runnable Rails application**. Generate the Rails boot files and migrations in the next milestone before exposing endpoints. Authentication, payments and access controls must be implemented before any user data is accepted.
+This is the first runnable Rails API foundation. It stores student projects, milestones and build-log text in PostgreSQL. Requests use bearer tokens; projects are scoped to their owner. The web studio is still browser-local and is **not connected to this API yet**.
 
-Suggested bootstrap from this directory with Ruby/Bundler installed:
+With Ruby 3.3, Bundler and PostgreSQL installed:
 
 ```bash
-rails new . --api --database=postgresql --skip-git
+bundle install
+DATABASE_URL=postgres://localhost/buildlab_development bin/rails db:create db:migrate
+DATABASE_URL=postgres://localhost/buildlab_development bin/rails server -p 3001
 ```
 
-Preserve and reconcile the existing Gemfile and `docs/product.md` when bootstrapping. Keep development credentials out of Git.
+Create a development-only student account in `bin/rails console`:
+
+```ruby
+User.create!(email: "student@example.test", display_name: "Student", role: "student", password: "choose-a-password")
+```
+
+`POST /api/v1/session` with email and password returns a bearer token. `GET /api/v1/me` verifies it. See `docs/api-contract.md` for project routes. Run integration tests with `TEST_DATABASE_URL=postgres://localhost/buildlab_test bin/rails db:test:prepare test`.
+
+There is deliberately no public registration yet. School-managed access for minors, teacher permissions, rate limiting for login, secure token storage on the web client, payments and uploads must be completed before production use. Keep credentials out of Git.

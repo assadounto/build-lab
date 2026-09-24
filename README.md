@@ -5,7 +5,7 @@ An engineering and computer science learning platform for JHS, SHS and universit
 ## Repository
 
 - `apps/web`: Next.js web app for students and schools
-- `apps/api`: Rails API foundation for persisted content and memberships
+- `apps/api`: Rails API for authenticated student projects, milestones and build logs
 - `docs`: product and architecture notes
 
 ## Run the web app
@@ -20,9 +20,9 @@ Open `http://localhost:3000`. Catalogue screens use sample data in `apps/web/lib
 
 ## Next implementation milestones
 
-1. Finish the Rails application bootstrap and migrations for users, schools, courses, projects, teams and submissions.
-2. Add authentication and server-enforced student, teacher, mentor and admin permissions.
-3. Replace sample content with API endpoints and add project creation, uploads and progress persistence.
-4. Add verified payments and teacher assignment workflows.
+1. Connect the studio UI to authenticated Rails project endpoints, with secure session handling.
+2. Build school-managed learner access and teacher assignment workflows.
+3. Add lessons, course enrollments, project evidence uploads and mentor review.
+4. Add verified course purchases and reporting.
 
 See `docs/product.md` for scope and data rules.

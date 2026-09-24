@@ -1,13 +1,13 @@
 # Student project API contract (next milestone)
 
-The browser storage prototype defines the user flow. Replace it with these authenticated Rails endpoints once accounts and authorization are ready. All project lookup and mutations must be scoped to the current user or an authorized school/team membership; accepting a client-supplied owner ID is not sufficient.
+The browser storage prototype defines the user flow. The Rails endpoints below now implement owner-scoped project persistence. Connect the web app after secure session handling is implemented. A client-supplied owner ID never authorizes access.
 
 | Method | Route | Purpose |
 | --- | --- | --- |
 | GET | `/api/v1/projects` | List projects the current learner can access |
-| POST | `/api/v1/projects` | Create custom project or start a published project template |
+| POST | `/api/v1/projects` | Create custom project or project with a template slug; all currently use default milestones |
 | GET | `/api/v1/projects/:id` | Read project, milestones and log entries |
 | PATCH | `/api/v1/projects/:id/milestones/:id` | Set milestone completion |
 | POST | `/api/v1/projects/:id/log_entries` | Add text to the build log |
 
-Required persistence: user, school membership, project template, student project, project membership, milestone, build log entry. Validate length and ownership in Rails. Use database transactions when starting a template project with milestones. Do not make school projects or minors' logs public by default. Add file upload and teacher review endpoints only after access rules are implemented and tested.
+Current persistence: user, access token, student project, milestone and build log entry. Project creation uses a transaction and creates six milestones. School memberships, project templates, team memberships, teacher review and file uploads are still pending. Do not make school projects or minors' logs public by default.
