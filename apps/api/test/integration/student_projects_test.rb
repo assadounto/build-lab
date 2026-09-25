@@ -15,7 +15,7 @@ class StudentProjectsTest < ActionDispatch::IntegrationTest
     milestone_id = response.parsed_body.dig("project", "milestones", 0, "id")
     assert_equal 6, response.parsed_body.dig("project", "milestones").size
 
-    patch "/api/v1/projects/#{project_id}/milestones/#{milestone_id}", params: { done: true }, headers: auth(@student_token)
+    patch "/api/v1/projects/#{project_id}/milestones/#{milestone_id}", params: { done: true }, headers: auth(@student_token), as: :json
     assert_response :success
     assert response.parsed_body.dig("milestone", "done")
 
@@ -24,7 +24,7 @@ class StudentProjectsTest < ActionDispatch::IntegrationTest
 
     get "/api/v1/projects/#{project_id}", headers: auth(@other_token)
     assert_response :not_found
-    patch "/api/v1/projects/#{project_id}/milestones/#{milestone_id}", params: { done: false }, headers: auth(@other_token)
+    patch "/api/v1/projects/#{project_id}/milestones/#{milestone_id}", params: { done: false }, headers: auth(@other_token), as: :json
     assert_response :not_found
     post "/api/v1/projects/#{project_id}/log_entries", params: { log_entry: { body: "Tampered note" } }, headers: auth(@other_token)
     assert_response :not_found
