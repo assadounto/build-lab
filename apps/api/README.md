@@ -16,7 +16,7 @@ Create a development-only student account in `bin/rails console`:
 User.create!(email: "student@example.test", display_name: "Student", role: "student", password: "choose-a-password")
 ```
 
-`POST /api/v1/session` with email and password returns a bearer token. `GET /api/v1/me` verifies it. See `docs/api-contract.md` for project routes. Run integration tests with `TEST_DATABASE_URL=postgres://localhost/buildlab_test bin/rails db:test:prepare test`.
+`POST /api/v1/session` with email and password returns a bearer token. `GET /api/v1/me` verifies it. See `docs/api-contract.md` for project routes. Run integration tests with `RAILS_ENV=test TEST_DATABASE_URL=postgres://localhost/buildlab_test bin/rails db:migrate test`.
 
 Bootstrap a school and its first administrator in `bin/rails console`:
 

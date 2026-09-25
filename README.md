@@ -20,7 +20,7 @@ Start the Rails API as described in `apps/api/README.md`, then run Next.js with 
 
 The responsive light-mode interface covers project discovery, course previews, the student studio, project creation, school onboarding, teacher dashboards and a school community. Original generated hero photos live in `apps/web/public/images`. Project and course catalogues use sample data. The community uses school-scoped Rails records: student posts and replies require teacher approval before classmates see them.
 
-Run the web typecheck and build with `cd apps/web && npm install && npm run typecheck && npm run build`. Run API integration tests with `cd apps/api && TEST_DATABASE_URL=postgres://localhost/buildlab_test bin/rails db:test:prepare test`. CI runs these checks on the draft PR.
+Run the web typecheck and build with `cd apps/web && npm install && npm run typecheck && npm run build`. Run API integration tests with `cd apps/api && RAILS_ENV=test TEST_DATABASE_URL=postgres://localhost/buildlab_test bin/rails db:migrate test`. CI runs these checks on the draft PR.
 
 ## Next implementation milestones
 

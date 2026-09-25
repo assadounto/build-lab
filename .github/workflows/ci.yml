@@ -49,5 +49,5 @@ jobs:
           ruby-version: '3.3'
           bundler-cache: true
           working-directory: apps/api
-      - run: bin/rails db:test:prepare
+      - run: bin/rails db:migrate
       - run: bin/rails test
