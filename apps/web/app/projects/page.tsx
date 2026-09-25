@@ -1,16 +1,22 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { Suspense, useMemo, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { ProjectCard } from "@/components/project-card";
 import { categories, projects, type Level } from "@/lib/sample-data";
 
 const icons: Record<string, string> = { "All projects": "▦", Energy: "☼", Robotics: "⚙", Agriculture: "❧", Electronics: "▣", Software: "⌘", "Computer Science": "⌘", Mechanical: "⚙", Civil: "△", Biomedical: "♡", "Data & AI": "▥" };
 
 export default function ProjectsPage() {
+  return <Suspense fallback={<main className="explore-page"><section className="explore-hero"><div className="container explore-hero-inner"><h1>Explore projects</h1></div></section></main>}><ProjectsContent /></Suspense>;
+}
+
+function ProjectsContent() {
+  const searchParams = useSearchParams();
   const [level, setLevel] = useState<Level | "All">("All");
   const [category, setCategory] = useState("All projects");
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(() => searchParams.get("q") ?? "");
   const [format, setFormat] = useState("All formats");
   const filtered = useMemo(() => projects.filter(project => {
     const matchesCategory = category === "All projects" || (category === "Energy" ? /solar|energy/i.test(`${project.title} ${project.category}`) : category === "Electronics" ? /electric|electronic|circuit|sensor/i.test(`${project.title} ${project.category} ${project.description}`) : project.category.includes(category));
