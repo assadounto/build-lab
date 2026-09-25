@@ -16,12 +16,12 @@ npm install
 npm run dev
 ```
 
-Start the Rails API as described in `apps/api/README.md`, then run Next.js with `RAILS_API_URL=http://localhost:3001`. Open `http://localhost:3000`. Catalogue screens use sample data in `apps/web/lib/sample-data.ts`. Provisioned student accounts can sign in and save projects, milestones and build notes to PostgreSQL through the web server. Earlier browser-only projects can be imported from the studio.
+Start the Rails API as described in `apps/api/README.md`, then run Next.js with `RAILS_API_URL=http://localhost:3001`. Open `http://localhost:3000`. Catalogue screens use sample data in `apps/web/lib/sample-data.ts`. Provisioned student accounts can sign in and save projects, milestones and build notes to PostgreSQL through the web server. Earlier browser-only projects can be imported from the studio. School administrators can invite teachers and learners, set up classes, and teachers can assign work and see progress at `/schools/dashboard`.
 
 ## Next implementation milestones
 
-1. Build school-managed learner access and teacher assignment workflows.
+1. Add reliable invitation delivery and account recovery, plus school privacy and safeguarding review.
 2. Add lessons, course enrollments, project evidence uploads and mentor review.
-3. Add verified course purchases and reporting.
+3. Add verified course purchases and richer reporting.
 
 See `docs/product.md` for scope and data rules.

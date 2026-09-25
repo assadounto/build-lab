@@ -3,6 +3,7 @@ class StudentProject < ApplicationRecord
   DEFAULT_STEPS = ["Understand the problem", "Research and plan", "Design your solution", "Build the first version", "Test and improve", "Present your project"].freeze
 
   belongs_to :owner, class_name: "User"
+  belongs_to :assignment, optional: true
   has_many :milestones, -> { order(:position) }, dependent: :destroy, inverse_of: :student_project
   has_many :log_entries, -> { order(created_at: :desc) }, dependent: :destroy, inverse_of: :student_project
 

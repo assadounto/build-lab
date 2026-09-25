@@ -10,4 +10,6 @@ The Rails endpoints below implement owner-scoped project persistence. The web ap
 | PATCH | `/api/v1/projects/:id/milestones/:id` | Set milestone completion |
 | POST | `/api/v1/projects/:id/log_entries` | Add text to the build log |
 
-Current persistence: user, access token, student project, milestone and build log entry. Project creation uses a transaction and creates six milestones. School memberships, project templates, team memberships, teacher review and file uploads are still pending. Do not make school projects or minors' logs public by default.
+Current persistence: users, access tokens, schools, memberships, classrooms, invitations, assignments, student projects, milestones and build log entries. Project and assignment creation use transactions. School administrators issue one-time activation codes; teachers see progress only for their assigned classes. Project templates, team memberships, teacher feedback and file uploads are still pending. School projects and minors' logs remain private by default.
+
+School routes: `GET /api/v1/schools`, `GET /api/v1/schools/:id/members`, `GET/POST /api/v1/schools/:id/classrooms`, `POST /api/v1/schools/:id/invitations`, `POST /api/v1/invitations/accept`, `GET /api/v1/classrooms/:id`, `POST /api/v1/classrooms/:id/enrollments`, `GET/POST /api/v1/classrooms/:id/assignments`, and `GET /api/v1/classrooms/:id/progress`.
