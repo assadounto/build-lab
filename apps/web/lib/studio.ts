@@ -1,5 +1,3 @@
-import { projects } from "./sample-data";
-
 export type StudentProject = {
   id: string;
   title: string;
@@ -32,7 +30,6 @@ export function writeProjects(value: StudentProject[]): void {
 }
 
 export function newProject(input: Pick<StudentProject, "title" | "description" | "level" | "category">, templateSlug?: string): StudentProject {
-  const template = projects.find(project => project.slug === templateSlug);
-  const titles = template ? ["Understand the problem", "Research and plan", "Design your solution", "Build the first version", "Test and improve", "Present your project"] : ["Define the problem", "Research solutions", "Plan the design", "Build the prototype", "Test and improve", "Share what you learned"];
+  const titles = templateSlug ? ["Understand the problem", "Research and plan", "Design your solution", "Build the first version", "Test and improve", "Present your project"] : ["Define the problem", "Research solutions", "Plan the design", "Build the prototype", "Test and improve", "Share what you learned"];
   return { ...input, id: crypto.randomUUID(), templateSlug, createdAt: new Date().toISOString(), steps: titles.map((title, index) => ({ id: String(index + 1), title, done: false })), notes: [] };
 }

@@ -31,7 +31,7 @@ module Api
         private
 
         def course_params
-          params.require(:course).permit(:title, :slug, :summary, :description, :level, :hours, :image_url, :status, :catalog_category_id, lessons: %i[title summary])
+          params.require(:course).permit(:title, :slug, :summary, :description, :level, :hours, :image_url, :status, :catalog_category_id, :related_project_slug, lessons: %i[title summary])
         end
 
         def assign_lessons(course)

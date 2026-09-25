@@ -1,0 +1,808 @@
+{
+  "categories": [
+    "Energy",
+    "Robotics",
+    "Agriculture",
+    "Electronics",
+    "Software",
+    "Computer Science",
+    "Mechanical",
+    "Civil",
+    "Biomedical",
+    "Data & AI",
+    "Renewable Energy",
+    "Civil + Electronics",
+    "Design (CAD)"
+  ],
+  "projects": [
+    {
+      "slug": "solar-rover",
+      "title": "Build a solar powered rover",
+      "category": "Robotics",
+      "level": "SHS",
+      "duration": "6 weeks",
+      "type": "Physical",
+      "description": "Design a solar-powered rover that can explore rough terrain and collect environmental data.",
+      "image": "/images/solar-rover-studio.webp",
+      "accent": "orange",
+      "brief": {
+        "challenge": "How might a small rover travel across uneven ground while collecting useful environmental readings?",
+        "concept": "Build a low-voltage rover with a solar-assisted power system, motor control and a simple sensor payload. Compare what the solar panel can actually supply with the motors’ demand, then test the rover outdoors.",
+        "outcome": "A moving prototype, a wiring and power budget, and a short field-test report.",
+        "skills": [
+          "Power budgeting",
+          "Motor control",
+          "Sensor integration",
+          "Field testing"
+        ],
+        "materials": [
+          "Small solar panel and charge controller",
+          "Rechargeable battery with suitable protection",
+          "Microcontroller and low-voltage sensors",
+          "Motor driver, geared motors and chassis",
+          "Multimeter and basic assembly tools"
+        ],
+        "phases": [
+          {
+            "title": "Define the mission",
+            "detail": "Choose a surface, a useful sensor reading and a realistic operating time.",
+            "evidence": "Mission brief and success targets"
+          },
+          {
+            "title": "Design the system",
+            "detail": "Sketch the power path, estimate motor demand and choose a safe low-voltage architecture.",
+            "evidence": "Block diagram and power budget"
+          },
+          {
+            "title": "Build and program",
+            "detail": "Assemble the chassis, control movement and record sensor readings.",
+            "evidence": "Prototype photos and code notes"
+          },
+          {
+            "title": "Test and improve",
+            "detail": "Compare runtime, mobility and sensor readings under different light conditions.",
+            "evidence": "Test table and revised design"
+          }
+        ],
+        "criteria": [
+          "Moves through the chosen test course",
+          "Records a readable sensor measurement",
+          "Documents runtime and power limits"
+        ],
+        "stretch": "Add an obstacle warning and compare energy use before and after your changes.",
+        "note": "Keep the build low voltage. Use an appropriate battery charger and teacher supervision for wiring and testing."
+      }
+    },
+    {
+      "slug": "smart-irrigation",
+      "title": "Smart irrigation system",
+      "category": "Agriculture",
+      "level": "JHS",
+      "duration": "2–4 weeks",
+      "type": "Hybrid",
+      "description": "Design a low-cost irrigation system that conserves water and keeps crops healthy.",
+      "image": "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=1000&q=85",
+      "accent": "teal",
+      "brief": {
+        "challenge": "How can a school garden use less water without leaving plants dry?",
+        "concept": "Measure soil conditions, decide when watering is needed and build a small demonstration that controls or signals irrigation. Start with a container garden so results are easy to observe.",
+        "outcome": "A garden prototype and a record comparing soil readings and water use.",
+        "skills": [
+          "Soil sensing",
+          "Control logic",
+          "Water conservation",
+          "Data recording"
+        ],
+        "materials": [
+          "Soil moisture sensor",
+          "Low-voltage controller",
+          "Small pump or indicator LED",
+          "Tubing and water container",
+          "Notebook for daily observations"
+        ],
+        "phases": [
+          {
+            "title": "Observe the garden",
+            "detail": "Identify the plants, watering pattern and when the soil is too dry.",
+            "evidence": "Observation log"
+          },
+          {
+            "title": "Set a threshold",
+            "detail": "Compare sensor readings in dry and watered soil and choose a trigger point.",
+            "evidence": "Reading table and threshold"
+          },
+          {
+            "title": "Make the prototype",
+            "detail": "Connect the sensor to an indicator or small low-voltage pump.",
+            "evidence": "Circuit sketch and working demo"
+          },
+          {
+            "title": "Measure the difference",
+            "detail": "Track watering events and adjust the threshold to avoid overwatering.",
+            "evidence": "Before-and-after comparison"
+          }
+        ],
+        "criteria": [
+          "Responds to a change in soil moisture",
+          "Records watering events",
+          "Explains the water-saving decision"
+        ],
+        "stretch": "Add a simple rainfall observation so watering can be delayed after rain.",
+        "note": "Keep electronics away from water and use a supervised low-voltage supply."
+      }
+    },
+    {
+      "slug": "portable-solar-charger",
+      "title": "Portable solar charger",
+      "category": "Renewable Energy",
+      "level": "SHS",
+      "duration": "1–2 weeks",
+      "type": "Physical",
+      "description": "Build a rugged portable charger for small devices using solar energy.",
+      "image": "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=1000&q=85",
+      "accent": "gold",
+      "brief": {
+        "challenge": "What would it take to charge a small device when wall power is unavailable?",
+        "concept": "Design a protected, portable solar charging prototype. Work out the load first, then compare panel output and stored energy against the charging goal.",
+        "outcome": "A low-voltage charger prototype and measured charging performance.",
+        "skills": [
+          "Solar basics",
+          "Energy calculations",
+          "Power conversion",
+          "Measurement"
+        ],
+        "materials": [
+          "Small solar panel",
+          "Compatible charge controller and protected storage",
+          "Regulated low-voltage output module",
+          "Enclosure and connectors",
+          "Multimeter"
+        ],
+        "phases": [
+          {
+            "title": "Define the load",
+            "detail": "Choose a small target device and calculate its approximate energy need.",
+            "evidence": "Load estimate"
+          },
+          {
+            "title": "Plan the power chain",
+            "detail": "Map the panel, controller, storage and regulated output.",
+            "evidence": "Wiring diagram"
+          },
+          {
+            "title": "Assemble and measure",
+            "detail": "Build the low-voltage system and record output in different sunlight.",
+            "evidence": "Prototype and readings"
+          },
+          {
+            "title": "Evaluate",
+            "detail": "Compare charging time with your estimate and explain any losses.",
+            "evidence": "Performance summary"
+          }
+        ],
+        "criteria": [
+          "Provides a stable intended output",
+          "Includes appropriate charging protection",
+          "Reports measured performance"
+        ],
+        "stretch": "Compare two panel orientations and graph their output.",
+        "note": "Use a compatible protected battery and charge controller. Never connect a device directly to an unregulated panel."
+      }
+    },
+    {
+      "slug": "air-quality",
+      "title": "Air quality monitor",
+      "category": "Data & AI",
+      "level": "University",
+      "duration": "2–4 weeks",
+      "type": "Hybrid",
+      "description": "Measure and map air quality around your school or community.",
+      "image": "https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=1000&q=85",
+      "accent": "blue",
+      "brief": {
+        "challenge": "How can we identify places and times when local air conditions change?",
+        "concept": "Collect readings with a sensor prototype, label the conditions and explore patterns in a simple map or chart. Treat low-cost sensor readings as indicative, not regulatory measurements.",
+        "outcome": "A sensor logger and a short, clearly qualified data story.",
+        "skills": [
+          "Environmental sensing",
+          "Data cleaning",
+          "Visualization",
+          "Interpreting uncertainty"
+        ],
+        "materials": [
+          "Particulate or gas sensor module",
+          "Microcontroller and power supply",
+          "Computer for data analysis",
+          "Spreadsheet or plotting tool",
+          "Location and observation log"
+        ],
+        "phases": [
+          {
+            "title": "Choose a question",
+            "detail": "Pick locations or times to compare and define what a reading can mean.",
+            "evidence": "Sampling plan"
+          },
+          {
+            "title": "Capture readings",
+            "detail": "Log readings with time, place and contextual observations.",
+            "evidence": "Raw dataset"
+          },
+          {
+            "title": "Analyze",
+            "detail": "Clean and chart the readings, noting sensor limitations and outliers.",
+            "evidence": "Graphs and notes"
+          },
+          {
+            "title": "Communicate",
+            "detail": "Explain the pattern without overstating health or regulatory conclusions.",
+            "evidence": "One-page findings"
+          }
+        ],
+        "criteria": [
+          "Captures timestamped readings",
+          "Shows a comparison chart",
+          "States sensor limitations"
+        ],
+        "stretch": "Compare indoor and outdoor trends over several days.",
+        "note": "This is an educational monitor, not a medical or certified air-quality instrument."
+      }
+    },
+    {
+      "slug": "attendance-app",
+      "title": "Build a school attendance app",
+      "category": "Software",
+      "level": "SHS",
+      "duration": "4–6 weeks",
+      "type": "Digital",
+      "description": "Create a web app to track attendance and generate useful reports.",
+      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1000&q=85",
+      "accent": "blue",
+      "brief": {
+        "challenge": "How can a class record attendance accurately and see useful patterns without exposing student information?",
+        "concept": "Create a small web application for marking attendance, reviewing records and summarizing class participation. Design roles and privacy rules before building the interface.",
+        "outcome": "A usable app prototype, a data model and a short demonstration.",
+        "skills": [
+          "Interface design",
+          "Data modeling",
+          "Access control",
+          "Testing"
+        ],
+        "materials": [
+          "Computer and code editor",
+          "Web framework or starter template",
+          "Local database or sample dataset",
+          "Test cases and wireframes"
+        ],
+        "phases": [
+          {
+            "title": "Map the workflow",
+            "detail": "Interview a teacher about taking, correcting and viewing attendance.",
+            "evidence": "User flow and wireframes"
+          },
+          {
+            "title": "Design the data",
+            "detail": "Plan classes, learners, dates and attendance records with access rules.",
+            "evidence": "Data model"
+          },
+          {
+            "title": "Build the core",
+            "detail": "Implement marking, editing and a simple summary view.",
+            "evidence": "Running prototype"
+          },
+          {
+            "title": "Test with scenarios",
+            "detail": "Try absent, late and correction cases using fictional learners.",
+            "evidence": "Test notes and fixes"
+          }
+        ],
+        "criteria": [
+          "Saves records by date and class",
+          "Allows correction with clear feedback",
+          "Restricts records to authorized users"
+        ],
+        "stretch": "Add a weekly summary chart or export for a teacher.",
+        "note": "Use fictional learner data during development and get school approval before using real records."
+      }
+    },
+    {
+      "slug": "solar-charger",
+      "title": "Design a solar charging station",
+      "category": "Renewable Energy",
+      "level": "SHS",
+      "duration": "4–8 weeks",
+      "type": "Physical",
+      "description": "Build a solar-powered charging station for your school or community.",
+      "image": "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=1000&q=85",
+      "accent": "gold",
+      "brief": {
+        "challenge": "Could a shared charging point serve a school reliably using solar energy?",
+        "concept": "Model a small solar charging station, estimate daily demand and prototype a protected low-voltage output. Show how usage and energy supply change through the day.",
+        "outcome": "A scale prototype, energy budget and usage plan.",
+        "skills": [
+          "Load estimation",
+          "System sizing",
+          "Circuit protection",
+          "Service design"
+        ],
+        "materials": [
+          "Small panel and compatible controller",
+          "Protected energy storage",
+          "Regulated charging module",
+          "Multimeter",
+          "Enclosure or scale model"
+        ],
+        "phases": [
+          {
+            "title": "Estimate demand",
+            "detail": "Count expected devices and sketch a daily charging schedule.",
+            "evidence": "Daily energy budget"
+          },
+          {
+            "title": "Size the prototype",
+            "detail": "Choose low-voltage components and map protection and connections.",
+            "evidence": "System diagram"
+          },
+          {
+            "title": "Build",
+            "detail": "Assemble the scale station and measure its regulated output.",
+            "evidence": "Working prototype"
+          },
+          {
+            "title": "Review capacity",
+            "detail": "Compare measured supply with planned demand and identify limits.",
+            "evidence": "Capacity report"
+          }
+        ],
+        "criteria": [
+          "Explains expected daily energy",
+          "Provides protected regulated output",
+          "Identifies when charging is unavailable"
+        ],
+        "stretch": "Design a fair booking or usage schedule for a class.",
+        "note": "This is a low-voltage learning prototype. Have qualified supervision before any building-scale installation."
+      }
+    },
+    {
+      "slug": "flood-warning",
+      "title": "Create a flood warning system",
+      "category": "Civil + Electronics",
+      "level": "SHS",
+      "duration": "4–6 weeks",
+      "type": "Hybrid",
+      "description": "Use sensors to monitor water levels and send early alerts.",
+      "image": "https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=1000&q=85",
+      "accent": "teal",
+      "brief": {
+        "challenge": "How could a community notice rising water early enough to respond?",
+        "concept": "Build a tabletop water-level monitor that detects threshold crossings and alerts a nearby observer. Explore false alarms and the limits of a single sensor.",
+        "outcome": "A working tabletop alert and documented threshold tests.",
+        "skills": [
+          "Level sensing",
+          "Threshold logic",
+          "Alert design",
+          "Reliability testing"
+        ],
+        "materials": [
+          "Water-level or distance sensor",
+          "Microcontroller",
+          "Buzzer and indicator lights",
+          "Clear test container",
+          "Low-voltage power supply"
+        ],
+        "phases": [
+          {
+            "title": "Define alert levels",
+            "detail": "Choose normal, warning and critical levels for a model channel.",
+            "evidence": "Threshold diagram"
+          },
+          {
+            "title": "Wire and program",
+            "detail": "Read the sensor and activate visible and audible alerts.",
+            "evidence": "Circuit and demo"
+          },
+          {
+            "title": "Test conditions",
+            "detail": "Repeat rising and falling water tests and record false triggers.",
+            "evidence": "Test table"
+          },
+          {
+            "title": "Improve the warning",
+            "detail": "Adjust thresholds and explain backup and maintenance needs.",
+            "evidence": "Revised design"
+          }
+        ],
+        "criteria": [
+          "Detects set levels consistently in the model",
+          "Produces distinct warning states",
+          "Reports false alarms and limitations"
+        ],
+        "stretch": "Add a local display or data log for recent water levels.",
+        "note": "A classroom prototype must not be relied on for real flood safety decisions."
+      }
+    },
+    {
+      "slug": "line-robot",
+      "title": "Make a line-following robot",
+      "category": "Robotics",
+      "level": "JHS",
+      "duration": "2–4 weeks",
+      "type": "Physical",
+      "description": "Build and program a robot to follow a line using sensors.",
+      "image": "https://images.unsplash.com/photo-1561144257-e32e8efc6c4f?w=1000&q=85",
+      "accent": "orange",
+      "brief": {
+        "challenge": "How can a robot follow a route using only the contrast beneath it?",
+        "concept": "Make a small robot sense a dark line on a light surface, steer with two motors and improve its performance through repeatable trials.",
+        "outcome": "A line-following robot and measured route results.",
+        "skills": [
+          "Optical sensing",
+          "Motor control",
+          "Control logic",
+          "Iterative testing"
+        ],
+        "materials": [
+          "Two-wheel chassis and motors",
+          "Motor driver and microcontroller",
+          "Line-tracking sensors",
+          "Protected low-voltage battery",
+          "Tape and test board"
+        ],
+        "phases": [
+          {
+            "title": "Create a course",
+            "detail": "Lay out a track with curves and a clear start and finish.",
+            "evidence": "Track sketch"
+          },
+          {
+            "title": "Read the line",
+            "detail": "Calibrate sensor readings on light and dark surfaces.",
+            "evidence": "Calibration notes"
+          },
+          {
+            "title": "Make it move",
+            "detail": "Control the motors to correct left and right drift.",
+            "evidence": "Robot demonstration"
+          },
+          {
+            "title": "Improve accuracy",
+            "detail": "Time multiple runs and adjust speed or sensor placement.",
+            "evidence": "Trial table"
+          }
+        ],
+        "criteria": [
+          "Finishes the chosen track",
+          "Corrects direction after a curve",
+          "Shows improvement across trials"
+        ],
+        "stretch": "Add a junction choice and explain how the robot decides its route."
+      }
+    },
+    {
+      "slug": "crop-ai",
+      "title": "Train a crop disease detector",
+      "category": "Data & AI",
+      "level": "University",
+      "duration": "4–8 weeks",
+      "type": "Digital",
+      "description": "Use computer vision to identify plant diseases from leaf images.",
+      "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1000&q=85",
+      "accent": "teal",
+      "brief": {
+        "challenge": "Can a model identify visible leaf patterns while remaining honest about uncertainty?",
+        "concept": "Train an image classifier using an appropriately sourced dataset, compare results across classes and show what happens on unfamiliar images.",
+        "outcome": "A reproducible model experiment and an error analysis.",
+        "skills": [
+          "Dataset curation",
+          "Model evaluation",
+          "Confusion matrices",
+          "Responsible AI"
+        ],
+        "materials": [
+          "Computer with Python environment",
+          "Documented plant-image dataset",
+          "Notebook or training script",
+          "Held-out test images"
+        ],
+        "phases": [
+          {
+            "title": "Audit the data",
+            "detail": "Identify classes, sources, image quality and possible duplicates.",
+            "evidence": "Dataset card"
+          },
+          {
+            "title": "Create a baseline",
+            "detail": "Split data by source and train a simple initial model.",
+            "evidence": "Training notebook"
+          },
+          {
+            "title": "Evaluate honestly",
+            "detail": "Review per-class errors and examples the model gets wrong.",
+            "evidence": "Confusion matrix"
+          },
+          {
+            "title": "Present limits",
+            "detail": "Explain where real field images differ from training images.",
+            "evidence": "Model card and demo"
+          }
+        ],
+        "criteria": [
+          "Keeps test images separate",
+          "Reports per-class performance",
+          "Explains at least two failure cases"
+        ],
+        "stretch": "Compare performance with different lighting or backgrounds.",
+        "note": "Predictions are educational and should not replace agricultural advice or field diagnosis."
+      }
+    },
+    {
+      "slug": "footbridge",
+      "title": "Model a safe footbridge",
+      "category": "Civil",
+      "level": "University",
+      "duration": "6–8 weeks",
+      "type": "Digital",
+      "description": "Design and analyze a bridge using CAD and simulation.",
+      "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1000&q=85",
+      "accent": "gold",
+      "brief": {
+        "challenge": "How can a small crossing be modeled to carry a specified load safely?",
+        "concept": "Create a conceptual footbridge in CAD, define loads and compare design options with simplified analysis. Record assumptions and where professional review is needed.",
+        "outcome": "A CAD model, simplified calculations and a design review.",
+        "skills": [
+          "CAD modeling",
+          "Load paths",
+          "Structural reasoning",
+          "Technical communication"
+        ],
+        "materials": [
+          "CAD software",
+          "Spreadsheet or structural model",
+          "Site measurements or assumed span",
+          "Drawing and review template"
+        ],
+        "phases": [
+          {
+            "title": "Define the crossing",
+            "detail": "State the span, intended users and assumed loading conditions.",
+            "evidence": "Design brief"
+          },
+          {
+            "title": "Compare concepts",
+            "detail": "Sketch alternative structures and explain their load paths.",
+            "evidence": "Concept sketches"
+          },
+          {
+            "title": "Model and analyze",
+            "detail": "Create a CAD model and run simplified checks with stated assumptions.",
+            "evidence": "Model and calculations"
+          },
+          {
+            "title": "Review the design",
+            "detail": "Identify failure modes, accessibility and unanswered site questions.",
+            "evidence": "Review report"
+          }
+        ],
+        "criteria": [
+          "Shows a clear load path",
+          "Lists assumptions and limits",
+          "Presents readable drawings"
+        ],
+        "stretch": "Compare material quantities between two structural options.",
+        "note": "This is a learning design, not construction approval. Real bridges require qualified engineering design and local approvals."
+      }
+    },
+    {
+      "slug": "health-monitor",
+      "title": "Build a health monitoring device",
+      "category": "Biomedical",
+      "level": "SHS",
+      "duration": "4–6 weeks",
+      "type": "Physical",
+      "description": "Prototype a device that measures heart rate and temperature.",
+      "image": "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1000&q=85",
+      "accent": "orange",
+      "brief": {
+        "challenge": "How can a prototype display pulse and temperature readings clearly without making medical claims?",
+        "concept": "Connect educational sensors to a low-voltage controller, display readings and compare repeatability under controlled conditions.",
+        "outcome": "A display prototype and a report on measurement limits.",
+        "skills": [
+          "Sensor interfacing",
+          "Signal quality",
+          "Interface design",
+          "Measurement validation"
+        ],
+        "materials": [
+          "Educational pulse sensor",
+          "Temperature sensor",
+          "Microcontroller and display",
+          "Low-voltage power",
+          "Measurement log"
+        ],
+        "phases": [
+          {
+            "title": "Define the display",
+            "detail": "Choose readable labels, units and a safe sensor placement.",
+            "evidence": "Interface sketch"
+          },
+          {
+            "title": "Read sensors",
+            "detail": "Capture readings and inspect noise or missing values.",
+            "evidence": "Data log"
+          },
+          {
+            "title": "Build the interface",
+            "detail": "Display readings with clear status when data is unavailable.",
+            "evidence": "Working prototype"
+          },
+          {
+            "title": "Check repeatability",
+            "detail": "Repeat measurements and discuss variation and limitations.",
+            "evidence": "Comparison report"
+          }
+        ],
+        "criteria": [
+          "Displays labeled readings",
+          "Handles missing sensor values",
+          "States that the readings are unvalidated"
+        ],
+        "stretch": "Plot recent readings without storing personal identifiers.",
+        "note": "Educational prototype only. Do not use it to diagnose, monitor or make treatment decisions."
+      }
+    },
+    {
+      "slug": "secure-chat",
+      "title": "Create a secure chat app",
+      "category": "Computer Science",
+      "level": "University",
+      "duration": "6–8 weeks",
+      "type": "Digital",
+      "description": "Build an end-to-end encrypted chat app and learn security basics.",
+      "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1000&q=85",
+      "accent": "blue",
+      "brief": {
+        "challenge": "How can two users exchange messages privately while understanding what encryption does and does not protect?",
+        "concept": "Build a prototype messaging flow using a well-established encryption library, then document identity, key handling and the remaining privacy risks. Never invent your own cryptographic algorithm.",
+        "outcome": "A demonstrable chat prototype and a threat model.",
+        "skills": [
+          "Threat modeling",
+          "Client-side cryptography",
+          "Authentication",
+          "Security testing"
+        ],
+        "materials": [
+          "Computer and code editor",
+          "Established audited cryptographic library",
+          "Test accounts and local environment",
+          "Threat-model template"
+        ],
+        "phases": [
+          {
+            "title": "Model the threats",
+            "detail": "Decide who should read messages and what the server may learn.",
+            "evidence": "Threat model"
+          },
+          {
+            "title": "Design identities",
+            "detail": "Plan account verification, keys and recovery before implementation.",
+            "evidence": "System diagram"
+          },
+          {
+            "title": "Build a prototype",
+            "detail": "Use a proven library for client-side encryption and message exchange.",
+            "evidence": "Working demo"
+          },
+          {
+            "title": "Review limitations",
+            "detail": "Test errors and document metadata, device and key-loss risks.",
+            "evidence": "Security review"
+          }
+        ],
+        "criteria": [
+          "Describes the trust boundary",
+          "Uses a maintained cryptographic library",
+          "Explains key and metadata limitations"
+        ],
+        "stretch": "Design a safe way for users to verify one another’s identity.",
+        "note": "This is an educational prototype. Do not promise production-grade end-to-end security without independent review."
+      }
+    }
+  ],
+  "courses": [
+    {
+      "slug": "electronics-from-zero",
+      "title": "Electronics from zero",
+      "field": "Electronics",
+      "level": "Beginner",
+      "hours": 6,
+      "image": "/images/courses-hero.webp",
+      "description": "Understand circuits, read simple schematics and build a working prototype.",
+      "projectSlug": "line-robot",
+      "lessons": [
+        {
+          "title": "Current, voltage and resistance",
+          "summary": "Learn what each quantity measures and use Ohm’s law to estimate current before connecting a component."
+        },
+        {
+          "title": "Build a safe LED circuit",
+          "summary": "Choose a resistor, connect an LED on a breadboard and test the polarity with a low-voltage supply."
+        },
+        {
+          "title": "Read a simple schematic",
+          "summary": "Trace a circuit from its power source through each component, then draw your own build plan."
+        }
+      ]
+    },
+    {
+      "slug": "solar-energy-essentials",
+      "title": "Solar energy essentials",
+      "field": "Energy",
+      "level": "Beginner",
+      "hours": 5,
+      "image": "/images/schools-hero.webp",
+      "description": "Learn how solar systems work and design a safe small-scale setup.",
+      "projectSlug": "portable-solar-charger",
+      "lessons": [
+        {
+          "title": "From sunlight to electricity",
+          "summary": "Explore how solar cells produce DC power and why orientation and shade affect output."
+        },
+        {
+          "title": "Estimate the energy you need",
+          "summary": "Work out load power and daily energy before choosing a panel and battery."
+        },
+        {
+          "title": "Plan a small solar build",
+          "summary": "Sketch the panel, charge controller, storage and load with suitable low-voltage protection."
+        }
+      ]
+    },
+    {
+      "slug": "arduino-for-makers",
+      "title": "Arduino for makers",
+      "field": "Robotics",
+      "level": "Intermediate",
+      "hours": 6,
+      "image": "/images/explore-hero.webp",
+      "description": "Program and build interactive projects with sensors and actuators.",
+      "projectSlug": "solar-rover",
+      "lessons": [
+        {
+          "title": "Your first sketch",
+          "summary": "Understand setup, loop, digital inputs and outputs before uploading a program."
+        },
+        {
+          "title": "Read a sensor",
+          "summary": "Connect a low-voltage sensor and inspect its readings using the serial monitor."
+        },
+        {
+          "title": "Control motion",
+          "summary": "Use a motor driver and separate motor power supply to control speed and direction."
+        }
+      ]
+    },
+    {
+      "slug": "design-with-cad",
+      "title": "Design with CAD",
+      "field": "Design (CAD)",
+      "level": "Beginner",
+      "hours": 5,
+      "image": "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=1000&q=85",
+      "description": "Turn your ideas into precise models and test dimensions before building.",
+      "projectSlug": "footbridge",
+      "lessons": [
+        {
+          "title": "Sketch with dimensions",
+          "summary": "Create a constrained sketch that captures the important measurements of a component."
+        },
+        {
+          "title": "Build a 3D model",
+          "summary": "Use basic features to turn a sketch into a printable or manufacturable part."
+        },
+        {
+          "title": "Review and export",
+          "summary": "Check fit and tolerances, then export the right file for sharing or fabrication."
+        }
+      ]
+    }
+  ]
+}

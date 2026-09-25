@@ -5,7 +5,7 @@ import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Check, ClipboardList, Clock3, FileText, Plus } from "lucide-react";
 import { apiRequest, ApiError, type ApiProject } from "@/lib/api";
-import { projects as catalogue } from "@/lib/sample-data";
+import type { CatalogProject } from "@/lib/catalog";
 
 export function StudioProjectWorkspace() {
   const { id } = useParams<{ id: string }>();
@@ -17,6 +17,7 @@ export function StudioProjectWorkspace() {
   const [note, setNote] = useState("");
   const [busyStep, setBusyStep] = useState<number | null>(null);
   const [saving, setSaving] = useState(false);
+  const [template, setTemplate] = useState<CatalogProject | null>(null);
 
   useEffect(() => {
     apiRequest<{ project: ApiProject }>(`/api/projects/${id}`)
@@ -24,6 +25,12 @@ export function StudioProjectWorkspace() {
       .catch(err => { if (err instanceof ApiError && err.status === 401) router.replace(`/login?next=${encodeURIComponent(`${rootHref}/${id}`)}`); else setError(err instanceof Error ? err.message : "Could not load this project"); })
       .finally(() => setLoaded(true));
   }, [id, rootHref, router]);
+  useEffect(() => {
+    if (!project?.template_slug) return;
+    let active = true;
+    apiRequest<{ project: CatalogProject }>(`/api/catalog/projects/${encodeURIComponent(project.template_slug)}`).then(data => { if (active) setTemplate(data.project); }).catch(() => { if (active) setTemplate(null); });
+    return () => { active = false; };
+  }, [project?.template_slug]);
 
   async function toggleMilestone(step: { id: number; done: boolean }) {
     if (!project) return;
@@ -53,10 +60,9 @@ export function StudioProjectWorkspace() {
   const steps = project.milestones || [];
   const completed = steps.filter(step => step.done).length;
   const percent = steps.length ? Math.round(completed / steps.length * 100) : 0;
-  const template = catalogue.find(item => item.slug === project.template_slug);
 
   return <main className="pro-workspace"><div className="pro-workspace-breadcrumb"><Link href={rootHref}><ArrowLeft size={16}/> Your studio</Link><span>/</span><span>{project.title}</span></div>
-    <header className="pro-workspace-hero"><div className="pro-workspace-intro"><span className="pro-overline"><ClipboardList size={17}/> PROJECT WORKSPACE / {project.category.toUpperCase()}</span><h1>{project.title}<span>.</span></h1><p>{project.description}</p><div className="pro-workspace-facts"><span>{project.level}</span><span>{project.category}</span><span>Started {new Date(project.created_at).toLocaleDateString()}</span></div><div className="pro-workspace-hero-actions"><a href="#milestones" className="button">Continue the build <ArrowRight size={16}/></a><a href="#project-log">Record a note <Plus size={16}/></a></div></div><div className="pro-workspace-visual" style={template ? { backgroundImage: `linear-gradient(0deg,#1d1b24a8,transparent 60%),url('${template.image}')` } : undefined}><span>IDEA → PROTOTYPE → RESULT</span><div><strong>{percent}%</strong><span>Project progress</span></div></div></header>
+    <header className="pro-workspace-hero"><div className="pro-workspace-intro"><span className="pro-overline"><ClipboardList size={17}/> PROJECT WORKSPACE / {project.category.toUpperCase()}</span><h1>{project.title}<span>.</span></h1><p>{project.description}</p><div className="pro-workspace-facts"><span>{project.level}</span><span>{project.category}</span><span>Started {new Date(project.created_at).toLocaleDateString()}</span></div><div className="pro-workspace-hero-actions"><a href="#milestones" className="button">Continue the build <ArrowRight size={16}/></a><a href="#project-log">Record a note <Plus size={16}/></a></div></div><div className="pro-workspace-visual" style={template?.image_url ? { backgroundImage: `linear-gradient(0deg,#1d1b24a8,transparent 60%),url('${template.image_url}')` } : undefined}><span>IDEA → PROTOTYPE → RESULT</span><div><strong>{percent}%</strong><span>Project progress</span></div></div></header>
     {error && <p className="form-error" role="alert">{error}</p>}
     <div className="pro-workspace-summary"><div><span className="pro-summary-icon"><Check size={18}/></span><span><strong>{completed} / {steps.length}</strong><small>Milestones completed</small></span></div><div><span className="pro-summary-icon"><FileText size={18}/></span><span><strong>{project.log_entries?.length || 0}</strong><small>Build notes</small></span></div><div><span className="pro-summary-icon"><Clock3 size={18}/></span><span><strong>{steps.find(step => !step.done)?.title || "Review your result"}</strong><small>Next step</small></span></div></div>
     <div className="pro-workspace-grid"><section id="milestones" className="pro-workspace-panel"><div className="pro-workspace-panel-head"><div><span className="pro-kicker">BUILD ROADMAP</span><h2>Move the work forward.</h2><p>Mark each milestone as you complete it. You can reopen a step whenever you need to revise the build.</p></div><strong>{percent}%</strong></div><div className="pro-progress" role="progressbar" aria-label="Project progress" aria-valuenow={percent} aria-valuemin={0} aria-valuemax={100}><span style={{ width: `${percent}%` }}/></div><div className="pro-milestones">{steps.map((step, index) => <label key={step.id} className={step.done ? "done" : ""}><input type="checkbox" checked={step.done} disabled={busyStep !== null} onChange={() => toggleMilestone(step)}/><span className="pro-milestone-number">{step.done ? <Check size={17}/> : String(index + 1).padStart(2, "0")}</span><span><strong>{step.title}</strong><small>{step.done ? "Completed" : "Ready to work on"}</small></span></label>)}</div></section>

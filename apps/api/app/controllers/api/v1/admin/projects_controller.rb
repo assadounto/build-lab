@@ -23,7 +23,7 @@ module Api
         private
 
         def project_params
-          params.require(:project).permit(:title, :slug, :summary, :description, :level, :format, :duration, :image_url, :status, :catalog_category_id)
+          params.require(:project).permit(:title, :slug, :summary, :description, :level, :format, :duration, :image_url, :status, :catalog_category_id, brief: [:challenge, :concept, :outcome, :stretch, :note, { skills: [], materials: [], criteria: [], phases: %i[title detail evidence] }])
         end
       end
     end

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, BookOpen, BriefcaseBusiness, CheckCircle2, ClipboardList, Plus, Wrench } from "lucide-react";
 import { apiRequest, ApiError, type ApiProject } from "@/lib/api";
-import { projects as catalogue } from "@/lib/sample-data";
+import type { CatalogProject } from "@/lib/catalog";
 import { readProjects, writeProjects, type StudentProject } from "@/lib/studio";
 
 type Account = { display_name: string };
@@ -23,9 +23,11 @@ export function StudioDashboard() {
   const [error, setError] = useState("");
   const [legacy, setLegacy] = useState<StudentProject[]>([]);
   const [importing, setImporting] = useState(false);
+  const [catalogue, setCatalogue] = useState<CatalogProject[]>([]);
 
   useEffect(() => {
     setLegacy(readProjects());
+    apiRequest<{ projects: CatalogProject[] }>("/api/catalog/projects").then(data => setCatalogue(data.projects)).catch(() => {});
     Promise.all([apiRequest<Account>("/api/session"), apiRequest<{ projects: ApiProject[] }>("/api/projects")])
       .then(async ([user, listing]) => {
         setAccount(user);
@@ -68,7 +70,7 @@ export function StudioDashboard() {
   const total = featured?.milestones?.length ?? 0;
   const percent = total ? Math.round(completed / total * 100) : 0;
   const next = featured?.milestones?.find(step => !step.done);
-  const image = catalogue.find(project => project.slug === featured?.template_slug)?.image;
+  const image = catalogue.find(project => project.slug === featured?.template_slug)?.image_url;
   const fields = new Set(projects.map(project => project.category)).size;
 
   return <main className="pro-studio"><div className="pro-studio-top"><div><span className="pro-overline"><BriefcaseBusiness size={17}/> YOUR PROJECT STUDIO</span><h1>Every great build starts here<span>.</span></h1><p>Your space to plan projects, track milestones and document everything you learn along the way.</p></div><Link className="button" href={newHref}><Plus size={17}/> Create a project</Link></div>
