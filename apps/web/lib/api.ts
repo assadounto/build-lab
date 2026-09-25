@@ -2,7 +2,7 @@ export type ApiProject = {
   id: number;
   title: string;
   description: string;
-  level: "JHS" | "SHS" | "University";
+  level: "JHS" | "SHS" | "University" | "Professional";
   category: string;
   template_slug: string | null;
   created_at: string;

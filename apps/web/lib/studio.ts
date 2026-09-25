@@ -4,7 +4,7 @@ export type StudentProject = {
   id: string;
   title: string;
   description: string;
-  level: "JHS" | "SHS" | "University";
+  level: "JHS" | "SHS" | "University" | "Professional";
   category: string;
   templateSlug?: string;
   createdAt: string;

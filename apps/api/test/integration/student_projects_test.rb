@@ -35,6 +35,14 @@ class StudentProjectsTest < ActionDispatch::IntegrationTest
     assert_response :unauthorized
   end
 
+  test "professional project level is accepted without changing classroom levels" do
+    post "/api/v1/projects", params: { project: { title: "Solar inspection tool", description: "Build a field tool to inspect small solar systems", level: "Professional", category: "Electrical" } }, headers: auth(@student_token)
+    assert_response :created
+    assert_equal "Professional", response.parsed_body.dig("project", "level")
+    assert_equal StudentProject::PROFESSIONAL_STEPS, response.parsed_body.dig("project", "milestones").map { |step| step.fetch("title") }
+    assert_not_includes StudentProject::LEVELS, "Professional"
+  end
+
   test "owner field from request cannot reassign project" do
     post "/api/v1/projects", params: { project: { title: "Solar charger", description: "A charger for our classroom phones", level: "SHS", category: "Electrical", owner_id: @other.id } }, headers: auth(@student_token)
     assert_response :created

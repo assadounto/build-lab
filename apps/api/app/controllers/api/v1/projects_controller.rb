@@ -17,7 +17,8 @@ module Api
         project = nil
         StudentProject.transaction do
           project = current_user.student_projects.create!(project_params)
-          StudentProject::DEFAULT_STEPS.each_with_index do |title, position|
+          steps = project.level == "Professional" ? StudentProject::PROFESSIONAL_STEPS : StudentProject::DEFAULT_STEPS
+          steps.each_with_index do |title, position|
             project.milestones.create!(title: title, position: position)
           end
         end

@@ -1,4 +1,5 @@
 export type Level = "JHS" | "SHS" | "University";
+export type ProjectLevel = Level | "Professional";
 
 export type Project = {
   slug: string;
