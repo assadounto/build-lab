@@ -3,27 +3,66 @@
 import { Suspense, useMemo, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { ArrowRight, ArrowUpRight, BookOpen, Compass, Search, SlidersHorizontal, Wrench } from "lucide-react";
 import { ProjectCard } from "@/components/project-card";
 import { categories, projects, type Level } from "@/lib/sample-data";
+import "./catalogue.css";
 
-const icons: Record<string, string> = { "All projects": "▦", Energy: "☼", Robotics: "⚙", Agriculture: "❧", Electronics: "▣", Software: "⌘", "Computer Science": "⌘", Mechanical: "⚙", Civil: "△", Biomedical: "♡", "Data & AI": "▥" };
+type Pathway = Level | "All" | "Professionals";
+
+const professionalPicks = new Set(["solar-rover", "air-quality", "solar-charger", "flood-warning", "crop-ai", "footbridge", "secure-chat", "health-monitor"]);
+const pathways: { label: string; value: Pathway }[] = [
+  { label: "All projects", value: "All" },
+  { label: "JHS", value: "JHS" },
+  { label: "SHS", value: "SHS" },
+  { label: "University", value: "University" },
+  { label: "Professional picks", value: "Professionals" },
+];
 
 export default function ProjectsPage() {
-  return <Suspense fallback={<main className="explore-page"><section className="explore-hero"><div className="container explore-hero-inner"><h1>Explore projects</h1></div></section></main>}><ProjectsContent /></Suspense>;
+  return <Suspense fallback={<main className="explore-page"><section className="explore-hero"><div className="container explore-hero-layout"><h1>Explore projects</h1></div></section></main>}><ProjectsContent /></Suspense>;
 }
 
 function ProjectsContent() {
   const searchParams = useSearchParams();
-  const [level, setLevel] = useState<Level | "All">(() => {
-    const requested = searchParams.get("level");
-    return requested === "JHS" || requested === "SHS" || requested === "University" ? requested : "All";
+  const [pathway, setPathway] = useState<Pathway>(() => {
+    if (searchParams.get("audience") === "professionals") return "Professionals";
+    const level = searchParams.get("level");
+    return level === "JHS" || level === "SHS" || level === "University" ? level : "All";
   });
   const [category, setCategory] = useState("All projects");
   const [query, setQuery] = useState(() => searchParams.get("q") ?? "");
   const [format, setFormat] = useState("All formats");
+  const featured = projects.find(project => project.slug === "solar-rover")!;
+
   const filtered = useMemo(() => projects.filter(project => {
-    const matchesCategory = category === "All projects" || (category === "Energy" ? /solar|energy/i.test(`${project.title} ${project.category}`) : category === "Electronics" ? /electric|electronic|circuit|sensor/i.test(`${project.title} ${project.category} ${project.description}`) : project.category.includes(category));
-    return (level === "All" || project.level === level) && matchesCategory && (format === "All formats" || project.type === format) && `${project.title} ${project.description} ${project.category}`.toLowerCase().includes(query.trim().toLowerCase());
-  }), [level, category, format, query]);
-  return <main className="explore-page"><section className="explore-hero"><div className="container explore-hero-inner"><span className="eyebrow">EXPLORE PROJECTS</span><h1>Find a project<br />worth building.</h1><p>Real projects. Practical skills. A brighter Africa.</p><div className="explore-levels" role="group" aria-label="Education level">{(["JHS", "SHS", "University"] as const).map(item => <button key={item} type="button" aria-pressed={level === item} onClick={() => setLevel(level === item ? "All" : item)}>{item}<small>{item === "JHS" ? "Ages 11–15" : item === "SHS" ? "Ages 15–18" : "Tertiary & beyond"}</small></button>)}</div><form onSubmit={event => event.preventDefault()} className="explore-search"><label className="sr-only" htmlFor="project-search">Search projects</label><span aria-hidden="true">⌕</span><input id="project-search" type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Search projects (e.g. solar, water, robot, IoT...)"/><button type="submit">Search</button></form></div></section><div className="container explore-content"><div className="explore-categories" role="group" aria-label="Project categories">{categories.map(item => <button key={item} type="button" className={category === item ? "active" : ""} aria-pressed={category === item} onClick={() => setCategory(item)}><span aria-hidden="true">{icons[item]}</span>{item}</button>)}</div><div className="explore-results-head"><span>{filtered.length} project{filtered.length === 1 ? "" : "s"} to explore</span><label>Format <select value={format} onChange={event => setFormat(event.target.value)}><option>All formats</option><option>Digital</option><option>Physical</option><option>Hybrid</option></select></label></div><div className="explore-results"><div className="project-grid explore-grid">{filtered.map(project => <ProjectCard key={project.slug} project={project}/>)}</div>{category === "All projects" && !query && format === "All formats" && <aside className="explore-challenge"><span className="eyebrow">FEATURED CHALLENGE</span><h2>Design for your community.</h2><p>Use your skills to solve a real problem in your school or neighborhood. Clean energy, clean water, better cities — real impact starts here.</p><Link className="button" href="/studio/new">Start your idea →</Link><div className="challenge-shape" aria-hidden="true">✳</div></aside>}</div>{filtered.length === 0 && <div className="empty-state">No projects match those filters. Try a different level, category or search.</div>}</div></main>;
+    const searchable = `${project.title} ${project.description} ${project.category}`;
+    const matchesPathway = pathway === "All" || (pathway === "Professionals" ? professionalPicks.has(project.slug) : project.level === pathway);
+    const matchesCategory = category === "All projects"
+      || (category === "Energy" ? /solar|energy/i.test(searchable)
+      : category === "Electronics" ? /electric|electronic|circuit|sensor/i.test(searchable)
+      : category === "Mechanical" ? /rover|robot|bridge|mechanical/i.test(searchable)
+      : project.category.includes(category));
+    return matchesPathway && matchesCategory && (format === "All formats" || project.type === format) && searchable.toLowerCase().includes(query.trim().toLowerCase());
+  }), [pathway, category, format, query]);
+
+  const clearFilters = () => { setPathway("All"); setCategory("All projects"); setQuery(""); setFormat("All formats"); };
+
+  return <main className="explore-page">
+    <section className="explore-hero"><div className="container explore-hero-layout"><div className="explore-hero-copy">
+      <span className="explore-overline"><Compass size={17} aria-hidden="true"/> THE BUILDLAB PROJECT LIBRARY</span>
+      <h1>Find something<br/><em>worth building.</em></h1>
+      <p>Discover hands-on engineering and computer science projects shaped around real problems. Choose a challenge, learn the skills and make it your own.</p>
+      <div className="explore-hero-audiences"><span>For students</span><span>For engineers</span><span>For technicians & makers</span></div>
+    </div><Link className="explore-featured" href={`/projects/${featured.slug}`} aria-label={`Explore featured project: ${featured.title}`}><div className="explore-featured-photo"/><span className="explore-featured-label">FEATURED BUILD / ROBOTICS</span><span className="explore-featured-caption"><span><small>{featured.level} · {featured.duration} · {featured.type}</small><strong>{featured.title}</strong></span><ArrowUpRight size={20} aria-hidden="true"/></span></Link></div></section>
+
+    <section className="container explore-content" aria-labelledby="explore-list-heading"><div className="explore-heading"><div><span className="eyebrow">MAKE SOMETHING REAL</span><h2 id="explore-list-heading">Explore the projects<span>.</span></h2><p>Find your starting point and follow the build wherever it takes you.</p></div><span className="explore-total">{projects.length} projects to discover</span></div>
+      <div className="explore-controls"><form className="explore-search" role="search" onSubmit={event => event.preventDefault()}><Search size={19} aria-hidden="true"/><label className="sr-only" htmlFor="project-search">Search projects</label><input id="project-search" type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Search solar, robotics, software, AI..."/><button type="submit">Search</button></form><div className="explore-levels" role="group" aria-label="Learning pathway">{pathways.map(item => <button key={item.value} type="button" aria-pressed={pathway === item.value} onClick={() => setPathway(item.value)}>{item.label}</button>)}</div></div>
+      <div className="explore-category-bar"><div className="explore-categories" role="group" aria-label="Project categories">{categories.map(item => <button key={item} type="button" className={category === item ? "active" : ""} aria-pressed={category === item} onClick={() => setCategory(item)}>{item}</button>)}</div></div>
+      <div className="explore-results-head"><div aria-live="polite"><strong>{filtered.length} project{filtered.length === 1 ? "" : "s"}</strong><span>{pathway === "Professionals" ? "Practical builds for working professionals" : "Ready to explore"}</span></div><label className="explore-format"><SlidersHorizontal size={16} aria-hidden="true"/><span>Format</span><select value={format} onChange={event => setFormat(event.target.value)}><option>All formats</option><option>Digital</option><option>Physical</option><option>Hybrid</option></select></label></div>
+      {filtered.length > 0 ? <div className="project-grid explore-grid">{filtered.map(project => <ProjectCard key={project.slug} project={project}/>)}</div> : <div className="explore-empty"><Search size={29} aria-hidden="true"/><h3>No projects found yet.</h3><p>Try another search term or clear the filters to see every build.</p><button type="button" className="button" onClick={clearFilters}>Clear filters <ArrowRight size={16}/></button></div>}
+      <div className="explore-create-banner"><div className="explore-create-icon"><Wrench size={26}/></div><div><span className="eyebrow">YOUR IDEA BELONGS HERE</span><h2>Have a project of your own?</h2><p>Open your studio to plan the build, capture what you try and keep moving forward.</p></div><Link className="button" href="/studio/new">Start your project <ArrowUpRight size={17}/></Link></div>
+      <div className="explore-learning-link"><BookOpen size={19} aria-hidden="true"/><span>Need the fundamentals first?</span><Link href="/courses">Explore course previews <ArrowRight size={16}/></Link></div>
+    </section>
+  </main>;
 }
