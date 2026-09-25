@@ -3,6 +3,8 @@ import { Header } from "@/components/header";
 import "./globals.css";
 import "./workspace.css";
 import "./studio-design.css";
+import "./discovery-design.css";
+import "./community-design.css";
 
 export const metadata: Metadata = { title: "BuildLab — Learn by building", description: "Real engineering and computer science projects for curious minds, from JHS to university." };
 

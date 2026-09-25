@@ -8,6 +8,7 @@ import { apiRequest } from "@/lib/api";
 const items = [
   { label: "Studio", href: "/studio", icon: "⌂" },
   { label: "Explore projects", href: "/projects", icon: "◇" },
+  { label: "Community", href: "/community", icon: "♧" },
   { label: "For schools", href: "/schools/dashboard", icon: "▤" },
 ];
 

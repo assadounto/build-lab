@@ -17,6 +17,12 @@ Rails.application.routes.draw do
         resources :assignments, only: %i[index create]
         get "progress", on: :member, to: "classrooms#progress"
       end
+      resources :community_posts, only: %i[index create show] do
+        patch :approve, on: :member
+        resources :community_comments, only: %i[index create] do
+          patch :approve, on: :member
+        end
+      end
       resources :projects, only: %i[index create show] do
         resources :milestones, only: %i[update]
         resources :log_entries, only: %i[create]
