@@ -14,7 +14,10 @@ export default function ProjectsPage() {
 
 function ProjectsContent() {
   const searchParams = useSearchParams();
-  const [level, setLevel] = useState<Level | "All">("All");
+  const [level, setLevel] = useState<Level | "All">(() => {
+    const requested = searchParams.get("level");
+    return requested === "JHS" || requested === "SHS" || requested === "University" ? requested : "All";
+  });
   const [category, setCategory] = useState("All projects");
   const [query, setQuery] = useState(() => searchParams.get("q") ?? "");
   const [format, setFormat] = useState("All formats");
