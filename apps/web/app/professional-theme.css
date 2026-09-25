@@ -1,0 +1,76 @@
+/* A light, product-led design system shared by the public site and workspaces. */
+:root{--ink:#171923;--muted:#626779;--blue:#6a36e8;--line:#e8e7ee;--cream:#faf9fc;--surface:#fff;--surface-soft:#f7f5fb;--violet-soft:#f1ebff}
+html{scroll-padding-top:92px}
+body{color:var(--ink);font-family:Manrope,Arial,sans-serif;font-size:14px;line-height:1.55;background:var(--cream)}
+button,input,textarea,select{font-family:inherit}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #a982fa;outline-offset:2px}
+h1,h2,h3{font-family:Manrope,Arial,sans-serif;letter-spacing:-.055em;color:inherit}
+.eyebrow{letter-spacing:1.45px;font-size:11px}
+.button{border-radius:7px;background:#6a36e8;box-shadow:none;font-weight:800;transition:background .2s,transform .2s,box-shadow .2s}
+.button:hover{background:#5924d4;box-shadow:0 8px 20px #6a36e825}
+.button-light{background:#fff;color:#6029d8}
+.button-light:hover{background:#f2edff}
+.text-link:hover,.header-inner nav a:hover{color:#612ad9}
+.panel,.project-card,.course-card,.studio-panel{border-color:#e9e7ee;box-shadow:0 6px 24px #25213d08}
+.panel h2,.panel h3{letter-spacing:-.045em}
+.site-header{background:#ffffffed;border-bottom:1px solid #e9e7ee;backdrop-filter:blur(16px)}
+.header-inner{height:78px;gap:28px}
+.logo{display:inline-flex;align-items:center;gap:8px;font-family:Manrope,Arial,sans-serif;font-size:23px;font-weight:800;letter-spacing:-.07em;color:#171923;line-height:1}
+.logo span:last-child,.logo-word{color:#171923}
+.logo-mark{width:29px;height:29px;display:grid;place-items:center;border-radius:6px;background:#6a36e8;color:#fff;font-size:19px;font-weight:700;line-height:1;letter-spacing:0}
+.header-inner nav{gap:33px;font-size:13px;font-weight:700;color:#3a3b47}
+.header-actions{display:flex;align-items:center;gap:14px;white-space:nowrap}
+.header-login{padding:9px 10px;font-weight:700;font-size:13px;color:#3e4050}
+.header-login:hover{color:#602bd8}
+.header-actions .button{padding:12px 17px;font-size:12px;gap:10px}
+.home-page,.explore-page,.courses-page,.schools-landing,.project-detail-page{color:#171923}
+.home-hero{background:linear-gradient(120deg,#fbfafc 15%,#f5f1ff 100%)}
+.home-hero h1{font-weight:700;letter-spacing:-.07em;line-height:1.03}
+.home-hero h1 em,.home-page h2 em{color:#6935e0}
+.home-hero-lead,.home-section-heading p,.home-feature-copy p,.home-journey-title p,.home-studio-copy p,.home-schools-copy p{color:#555c6e}
+.home-promise,.home-end,.project-final-cta{background:#1b1928}
+.home-promise p strong{color:#c9b2ff}
+.home-section,.project-related{background:#fff}
+.home-feature-wrap{background:#f8f6fc}
+.home-journey{background:#fbfafc;border-color:#eeeaf3}
+.home-journey-steps>div,.home-field-card,.home-course-card,.home-studio-preview{border-radius:10px}
+.home-journey-steps>div{border-color:#eae7f0}
+.home-schools{background:#f4f1fb}
+.home-schools-points span{border-color:#e6ddf6}
+.home-end .button,.project-final-cta .button{color:#622bdc}
+.project-detail-page h1,.project-detail-page h2,.project-detail-page h3,.home-page h1,.home-page h2,.home-page h3{font-family:Manrope,Arial,sans-serif}
+.project-detail-section .project-challenge,.project-aside-quote p,.project-related-heading h2{font-family:Manrope,Arial,sans-serif}
+.project-challenge{font-weight:700}
+.project-section-nav{top:78px}
+.project-brief-card,.project-outcome-card{background:#f7f4ff;border-color:#e9dfff}
+.project-stretch{background:#faf7ff}
+.project-stretch>span{color:#6935d9}
+.studio-shell{--studio-blue:#6a36e8;--studio-ink:#1d2030;--studio-muted:#686d7b;background:#faf9fc;color:#1d2030}
+.studio-sidebar{background:#fff;border-right:1px solid #e9e7ee}
+.studio-brand-mark{display:grid;place-items:center;width:29px;height:29px;background:#6a36e8;color:#fff!important;border-radius:6px;font-size:20px!important}
+.studio-sidebar nav a.active{background:#f1ebff;color:#5d2bd2}
+.studio-dashboard,.community-page,.school-dashboard{color:#1d2030}
+.studio-feature{background:#f7f4ff;border-color:#e9e0f5;border-radius:11px}
+.studio-kicker,.studio-target{background:#eee5ff;color:#612acb}
+.studio-panel{border-color:#e9e7ee;border-radius:10px}
+.studio-rail-focus{background:#f6f1ff;border-color:#e9ddfb}
+.studio-start-card{background:#f7f4ff}
+.explore-hero,.courses-hero,.schools-landing-hero{background-color:#faf9fc}
+.explore-categories button.active,.course-filters button.active,.explore-levels button[aria-pressed=true]{background:#6a36e8;border-color:#6a36e8;color:#fff}
+.explore-challenge{background:#f8f3ff;border-color:#e8ddfa}
+.explore-challenge .button{background:#6a36e8}
+.guided-pathway{background:linear-gradient(110deg,#f7f3ff,#fff);border-color:#eee6fa}
+.school-story-card{border-color:#e9e7ee}
+.footer{background:#171621;color:#d5d1de;border-top:0}
+.footer-main{display:grid;grid-template-columns:minmax(270px,1.5fr) repeat(3,minmax(110px,1fr));gap:40px;padding-top:60px;padding-bottom:60px}
+.footer .logo{color:#fff}.footer .logo-word{color:#fff}
+.footer-about p{font-size:13px;line-height:1.7;color:#a9a5b6;max-width:300px;margin:19px 0 15px}
+.footer-about>span{color:#9f78ef;font-size:12px;font-weight:800}
+.footer-main>div:not(:first-child){display:flex;flex-direction:column;align-items:flex-start;gap:13px}
+.footer-main h2{font:800 12px Manrope,Arial,sans-serif;letter-spacing:.03em;color:#fff;margin:4px 0 8px}
+.footer-main a:not(.logo){font-size:12px;color:#aaa6b7}
+.footer-main a:not(.logo):hover{color:#fff}
+.footer-bottom{display:flex;justify-content:space-between;gap:20px;border-top:1px solid #ffffff21;padding-top:20px;padding-bottom:23px;color:#858092;font-size:11px}
+@media(max-width:950px){.header-inner nav{gap:17px}.header-login{display:none}.footer-main{gap:25px}}
+@media(max-width:700px){.header-inner{height:auto;min-height:72px;padding-top:12px;padding-bottom:10px}.header-inner nav{order:3;flex:1 0 100%;gap:24px;overflow:auto;padding:6px 0}.header-actions{margin-left:auto}.header-actions .button{padding:9px 11px;font-size:11px}.logo{font-size:21px}.project-section-nav{top:0}.footer-main{grid-template-columns:repeat(2,1fr);gap:30px;padding-top:45px;padding-bottom:45px}.footer-about{grid-column:1/-1}.footer-bottom{flex-wrap:wrap}}
+@media(max-width:420px){.header-inner nav{font-size:12px}.footer-main{grid-template-columns:repeat(2,minmax(0,1fr))}}
