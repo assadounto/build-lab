@@ -13,6 +13,7 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  { slug: "solar-rover", title: "Build a solar powered rover", category: "Robotics", level: "SHS", duration: "6 weeks", type: "Physical", description: "Design a solar-powered rover that can explore rough terrain and collect environmental data.", image: "/images/solar-rover-studio.webp", accent: "orange" },
   { slug: "attendance-app", title: "Build a school attendance app", category: "Software", level: "SHS", duration: "4–6 weeks", type: "Digital", description: "Create a web app to track attendance and generate useful reports.", image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1000&q=85", accent: "blue" },
   { slug: "solar-charger", title: "Design a solar charging station", category: "Renewable Energy", level: "SHS", duration: "4–8 weeks", type: "Physical", description: "Build a solar-powered charging station for your school or community.", image: "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=1000&q=85", accent: "gold" },
   { slug: "flood-warning", title: "Create a flood warning system", category: "Civil + Electronics", level: "SHS", duration: "4–6 weeks", type: "Hybrid", description: "Use sensors to monitor water levels and send early alerts.", image: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=1000&q=85", accent: "teal" },
