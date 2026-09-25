@@ -5,19 +5,31 @@ import { ArrowRight, ArrowUpRight, Check, ChevronRight, Clock3, Compass, Layers3
 import { ProjectCard } from "@/components/project-card";
 import { projectBriefs } from "@/lib/project-briefs";
 import { projects } from "@/lib/sample-data";
+import { CatalogProjectDetail } from "@/components/catalog-detail";
+import type { CatalogProject } from "@/lib/catalog";
+import { callApi } from "@/lib/server-api";
 import "./project-detail.css";
 
 export function generateStaticParams() { return projects.map(project => ({ slug: project.slug })); }
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const project = projects.find(item => item.slug === slug);
-  return project ? { title: `${project.title} | BuildLab Projects`, description: project.description } : {};
+  if (project) return { title: `${project.title} | BuildLab Projects`, description: project.description };
+  const response = await callApi(`catalog/projects/${encodeURIComponent(slug)}`);
+  if (!response.ok) return {};
+  const data = await response.json() as { project: CatalogProject };
+  return { title: `${data.project.title} | BuildLab Projects`, description: data.project.summary };
 }
 
 export default async function ProjectDetail({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const project = projects.find(item => item.slug === slug);
-  if (!project) notFound();
+  if (!project) {
+    const response = await callApi(`catalog/projects/${encodeURIComponent(slug)}`);
+    if (!response.ok) notFound();
+    const data = await response.json() as { project: CatalogProject };
+    return <CatalogProjectDetail project={data.project}/>;
+  }
   const brief = projectBriefs[slug];
   const related = projects.filter(item => item.slug !== slug && (item.category === project.category || item.level === project.level)).slice(0, 3);
   const startHref = `/studio/new?template=${encodeURIComponent(slug)}`;

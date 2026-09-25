@@ -3,6 +3,17 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      namespace :catalog do
+        resources :categories, only: :index
+        resources :projects, only: %i[index show], param: :slug
+        resources :courses, only: %i[index show], param: :slug
+      end
+      namespace :admin do
+        get :overview, to: "overview#show"
+        resources :categories, only: %i[index create update]
+        resources :projects, only: %i[index create update]
+        resources :courses, only: %i[index create update]
+      end
       post "session", to: "sessions#create"
       delete "session", to: "sessions#destroy"
       get "me", to: "sessions#show"

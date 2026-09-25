@@ -5,7 +5,7 @@ export type Project = {
   slug: string;
   title: string;
   category: string;
-  level: Level;
+  level: ProjectLevel;
   duration: string;
   type: "Digital" | "Physical" | "Hybrid";
   description: string;
