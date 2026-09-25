@@ -1,0 +1,1 @@
+export type Course = { slug: string; title: string; field: string; level: string; hours: number; image: string; description: string; projectSlug: string; lessons: { title: string; summary: string }[] };

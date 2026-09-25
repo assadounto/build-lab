@@ -1,0 +1,43 @@
+Rails.application.routes.draw do
+  get "/health", to: "health#show"
+
+  namespace :api do
+    namespace :v1 do
+      namespace :catalog do
+        resources :categories, only: :index
+        resources :projects, only: %i[index show], param: :slug
+        resources :courses, only: %i[index show], param: :slug
+      end
+      namespace :admin do
+        get :overview, to: "overview#show"
+        resources :categories, only: %i[index create update]
+        resources :projects, only: %i[index create update]
+        resources :courses, only: %i[index create update]
+      end
+      post "session", to: "sessions#create"
+      delete "session", to: "sessions#destroy"
+      get "me", to: "sessions#show"
+      post "invitations/accept", to: "invitations#accept"
+      resources :schools, only: :index do
+        get "members", on: :member, to: "schools#members"
+        resources :invitations, only: :create
+        resources :classrooms, only: %i[index create]
+      end
+      resources :classrooms, only: :show do
+        resources :enrollments, only: :create
+        resources :assignments, only: %i[index create]
+        get "progress", on: :member, to: "classrooms#progress"
+      end
+      resources :community_posts, only: %i[index create show] do
+        patch :approve, on: :member
+        resources :community_comments, only: %i[index create] do
+          patch :approve, on: :member
+        end
+      end
+      resources :projects, only: %i[index create show] do
+        resources :milestones, only: %i[update]
+        resources :log_entries, only: %i[create]
+      end
+    end
+  end
+end

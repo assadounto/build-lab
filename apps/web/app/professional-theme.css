@@ -1,0 +1,112 @@
+/* A light, product-led design system shared by the public site and workspaces. */
+:root{--ink:#171923;--muted:#626779;--blue:#c51369;--line:#e8e7ee;--cream:#faf9fb;--surface:#fff;--surface-soft:#fbf5f8;--violet-soft:#ffebf5}
+html{scroll-padding-top:92px}
+body{color:var(--ink);font-family:Manrope,Arial,sans-serif;font-size:14px;line-height:1.55;background:var(--cream)}
+button,input,textarea,select{font-family:inherit}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #fc80be;outline-offset:2px}
+h1,h2,h3{font-family:Manrope,Arial,sans-serif;letter-spacing:-.055em;color:inherit}
+.eyebrow{letter-spacing:1.45px;font-size:11px}
+.button{border-radius:7px;background:#c51369;box-shadow:none;font-weight:800;transition:background .2s,transform .2s,box-shadow .2s}
+.button:hover{background:#b31b67;box-shadow:0 8px 20px #c5136925}
+.button-light{background:#fff;color:#b21d67}
+.button-light:hover{background:#ffedf6}
+.text-link:hover,.header-inner nav a:hover{color:#b21c67}
+.panel,.project-card,.course-card,.studio-panel{border-color:#e9e7ee;box-shadow:0 6px 24px #25213d08}
+.panel h2,.panel h3{letter-spacing:-.045em}
+.site-header{background:#ffffffed;border-bottom:1px solid #e9e7ee;backdrop-filter:blur(16px)}
+.header-inner{height:78px;gap:28px}
+.logo{display:inline-flex;align-items:center;gap:8px;font-family:Manrope,Arial,sans-serif;font-size:23px;font-weight:800;letter-spacing:-.07em;color:#171923;line-height:1}
+.logo span:last-child,.logo-word{color:#171923}
+.logo-mark{width:29px;height:29px;display:grid;place-items:center;border-radius:6px;background:#c51369;color:#fff;font-size:19px;font-weight:700;line-height:1;letter-spacing:0}
+.header-inner nav{gap:33px;font-size:13px;font-weight:700;color:#3a3b47}
+.header-actions{display:flex;align-items:center;gap:14px;white-space:nowrap}
+.header-login{padding:9px 10px;font-weight:700;font-size:13px;color:#3e4050}
+.header-login:hover{color:#b11d67}
+.header-actions .button{padding:12px 17px;font-size:12px;gap:10px}
+.home-page,.explore-page,.courses-page,.schools-landing,.project-detail-page{color:#171923}
+.home-hero{background:linear-gradient(120deg,#fcfafb 15%,#fff1f8 100%)}
+.home-hero h1{font-weight:700;letter-spacing:-.07em;line-height:1.03}
+.home-hero h1 em,.home-page h2 em{color:#e3328b}
+.home-hero-lead,.home-section-heading p,.home-feature-copy p,.home-journey-title p,.home-studio-copy p,.home-schools-copy p{color:#555c6e}
+.home-promise,.home-end,.project-final-cta{background:#1b1928}
+.home-promise p strong{color:#ffb2d9}
+.home-section,.project-related{background:#fff}
+.home-feature-wrap{background:#fcf6f9}
+.home-journey{background:#fcfafb;border-color:#f3eaee}
+.home-journey-steps>div,.home-field-card,.home-course-card,.home-studio-preview{border-radius:10px}
+.home-journey-steps>div{border-color:#f0e7ec}
+.home-schools{background:#fbf1f6}
+.home-schools-points span{border-color:#f6ddea}
+.home-end .button,.project-final-cta .button{color:#b41a67}
+.project-detail-page h1,.project-detail-page h2,.project-detail-page h3,.home-page h1,.home-page h2,.home-page h3{font-family:Manrope,Arial,sans-serif}
+.project-detail-section .project-challenge,.project-aside-quote p,.project-related-heading h2{font-family:Manrope,Arial,sans-serif}
+.project-challenge{font-weight:700}
+.project-section-nav{top:78px}
+.project-brief-card,.project-outcome-card{background:#fff4fa;border-color:#ffdfef}
+.project-stretch{background:#fff7fb}
+.project-stretch>span{color:#b11e67}
+.studio-shell{--studio-blue:#c51369;--studio-ink:#1d2030;--studio-muted:#686d7b;background:#faf9fb;color:#1d2030}
+.studio-sidebar{background:#fff;border-right:1px solid #e9e7ee}
+.studio-brand-mark{display:grid;place-items:center;width:29px;height:29px;background:#c51369;color:#fff!important;border-radius:6px;font-size:20px!important}
+.studio-sidebar nav a.active{background:#ffebf5;color:#ae2067}
+.studio-dashboard,.community-page,.school-dashboard{color:#1d2030}
+.studio-feature{background:#fff4fa;border-color:#f5e0eb;border-radius:11px}
+.studio-kicker,.studio-target{background:#ffe5f2;color:#ae2167}
+.studio-panel{border-color:#e9e7ee;border-radius:10px}
+.studio-rail-focus{background:#fff1f8;border-color:#fcdcec}
+.studio-start-card{background:#fff4fa}
+.explore-hero,.courses-hero,.schools-landing-hero{background-color:#faf9fb}
+.explore-categories button.active,.course-filters button.active,.explore-levels button[aria-pressed=true]{background:#c51369;border-color:#c51369;color:#fff}
+.explore-challenge{background:#fff3f9;border-color:#fbdcec}
+.explore-challenge .button{background:#c51369}
+.guided-pathway{background:linear-gradient(110deg,#fff3f9,#fff);border-color:#fae6f0}
+.school-story-card{border-color:#e9e7ee}
+.footer{background:#171621;color:#d5d1de;border-top:0}
+.footer-main{display:grid;grid-template-columns:minmax(270px,1.5fr) repeat(3,minmax(110px,1fr));gap:40px;padding-top:60px;padding-bottom:60px}
+.footer .logo{color:#fff}.footer .logo-word{color:#fff}
+.footer-about p{font-size:13px;line-height:1.7;color:#a9a5b6;max-width:300px;margin:19px 0 15px}
+.footer-about>span{color:#f176b4;font-size:12px;font-weight:800}
+.footer-main>div:not(:first-child){display:flex;flex-direction:column;align-items:flex-start;gap:13px}
+.footer-main h2{font:800 12px Manrope,Arial,sans-serif;letter-spacing:.03em;color:#fff;margin:4px 0 8px}
+.footer-main a:not(.logo){font-size:12px;color:#aaa6b7}
+.footer-main a:not(.logo):hover{color:#fff}
+.footer-bottom{display:flex;justify-content:space-between;gap:20px;border-top:1px solid #ffffff21;padding-top:20px;padding-bottom:23px;color:#858092;font-size:11px}
+@media(max-width:950px){.header-inner nav{gap:17px}.header-login{display:none}.footer-main{gap:25px}}
+@media(max-width:700px){.header-inner{height:auto;min-height:72px;padding-top:12px;padding-bottom:10px}.header-inner nav{order:3;flex:1 0 100%;gap:24px;overflow:auto;padding:6px 0}.header-actions{margin-left:auto}.header-actions .button{padding:9px 11px;font-size:11px}.logo{font-size:21px}.project-section-nav{top:0}.footer-main{grid-template-columns:repeat(2,1fr);gap:30px;padding-top:45px;padding-bottom:45px}.footer-about{grid-column:1/-1}.footer-bottom{flex-wrap:wrap}}
+@media(max-width:420px){.header-inner nav{font-size:12px}.footer-main{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* A learning-first navigation and accessible magenta accent. */
+:root{--ink:#181820;--blue:#c51369;--line:#e9e8ed;--cream:#fff;--surface-soft:#faf8fa}
+body{background:#fff;color:var(--ink)}
+.site-header{background:#fff;border-color:#e9e8ed;backdrop-filter:none}
+.header-utility{background:#20202a;color:#f5f3f5}
+.header-utility-inner{height:32px;display:flex;align-items:center;justify-content:space-between;font-size:10px;font-weight:700;letter-spacing:.035em}
+.header-utility-inner a{display:inline-flex;align-items:center;gap:5px;color:#f6d5e5}
+.header-utility-inner a:hover{color:#fff}
+.header-inner{height:76px;justify-content:space-between;gap:22px}
+.logo-mark,.studio-brand-mark{background:#c51369}
+.header-inner nav{gap:22px;white-space:nowrap}
+.header-inner nav a{padding:27px 0;border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
+.header-inner nav a:hover{border-bottom-color:#c51369;color:#a90d57}
+.header-search{display:flex;align-items:center;gap:9px;min-width:155px;max-width:245px;flex:1;padding:4px 5px 4px 13px;border:1px solid #e2e1e7;border-radius:7px;background:#faf9fb;color:#777582}
+.header-search:focus-within{border-color:#c51369;box-shadow:0 0 0 3px #c5136919}
+.header-search input{border:0;outline:0;background:transparent;width:100%;min-width:0;font-size:11px;color:#25232d}
+.header-search input::placeholder{color:#777582}
+.header-search button{display:grid;place-items:center;flex:none;width:29px;height:29px;border:0;border-radius:5px;background:#f7e7ef;color:#a90d57}
+.header-search button:hover{background:#eed0de}
+.header-actions{gap:8px}.header-actions .button{background:#c51369;color:#fff;border-radius:6px;white-space:nowrap}
+.header-actions .button:hover,.button:hover{background:#a90d57;color:#fff}
+.button{background:#c51369;color:#fff}
+.home-hero{background:#faf9fb}
+.home-hero h1{font-weight:800}
+.home-hero h1 em,.home-page h2 em{color:#b91060}
+.home-overline,.home-kicker,.eyebrow{color:#a90d57}
+.home-promise,.home-end,.project-final-cta{background:#20202a}
+.home-feature-wrap,.home-journey{background:#f8f7f9}
+.home-schools{background:#faf4f7}
+.project-card:hover,.course-card:hover,.home-course-card:hover{box-shadow:0 16px 40px #26182118}
+.footer{background:#20202a}
+.footer-about>span{color:#f3a7cc}
+@media(max-width:1200px){.header-inner{gap:15px}.header-inner nav{gap:14px}.header-search{max-width:190px}.header-login{display:none}}
+@media(max-width:950px){.header-search{display:none}.header-inner nav{gap:20px}}
+@media(max-width:700px){.header-utility{display:none}.header-inner{height:auto;min-height:72px;gap:10px}.header-inner nav{gap:21px}.header-inner nav a{padding:7px 0}.header-actions .button{padding:10px 12px}}
